@@ -1,0 +1,23 @@
+
+
+import java.io.BufferedReader; \\записать текст в байтовый входной поток (запись текста в буфер)
+import java.io.IOException; \\исключение ввода-вывода
+import java.io.InputStreamReader; \\прочесть символы из байтового входного потока
+ 
+public class Str {
+    public static void main(String[] args) throws IOException { \\предупреждение о возможном исключении ввода-вывода
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); \\создание буферного потока ввода символов
+        System.out.println("Введите число строк:");
+        int countString=Integer.parseInt(reader.readLine()) ; \\преобразовать считанную строку в число символов
+        String veryShortString=null; \\Проверка, что самая короткая строка еще не введена и имеет нулевую длину
+        for (int i=0; i< countString; i++){ \\счет символов
+            System.out.println("Введите строку номер " + (i+1)); \\ввести строки
+            String currentString = reader.readLine(); \\чтение из введенных в поток текущей строки
+            if (veryShortString==null || currentString.length()<veryShortString.length()){ \\текущая строка самая короткая из введеных строк
+                veryShortString=currentString; \\определение самой короткой строки из введенных
+            }
+        }
+        System.out.println("Самая короткая строка = " + veryShortString); \\вывести самую короткую строку
+        System.out.println("Ее длина равна " + veryShortString.length()); \\длина самой короткой строки в символах
+    }
+}
